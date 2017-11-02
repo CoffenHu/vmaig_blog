@@ -14,6 +14,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -32,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,7 +65,8 @@ ROOT_URLCONF = 'vmaig_blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates/")],
+        # 'DIRS': [os.path.join(BASE_DIR, "templates/")],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,6 +109,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
@@ -219,5 +225,76 @@ QINIU_BUCKET_NAME = ''
 QINIU_URL = ''
 
 # 网站标题等内容配置
-WEBSITE_TITLE = u'Vmaig'
-WEBSITE_WELCOME = u'欢迎来到Vmaig'
+WEBSITE_TITLE = u'TuTu'
+WEBSITE_WELCOME = u'欢迎来到TuTu'
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': u'TuTu后台管理平台',
+    'HEADER_DATE_FORMAT': 'Y年 F j日 l',
+    'HEADER_TIME_FORMAT': 'H:i',
+    'SHOW_REQUIRED_ASTERISK': True,
+    'CONFIRM_UNSAVED_CHANGES': True,
+    'SEARCH_URL': '/admin/blog/article/',
+    'MENU_OPEN_FIRST_CHILD': True,
+    'LIST_PER_PAGE': 50,
+    'MENU': (
+        # 'sites',
+        # {'app': 'blog', 'label': u'博客', 'icon': 'icon-lock'},
+        # # Rename app and set icon
+        # {'app': 'auth', 'label': 'Authorization', 'icon':'icon-lock'},
+        #
+        # # Reorder app models
+        # {'app': 'auth', 'models': ('user', 'group')},
+        #
+        # # Custom app, with models
+        # {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+        #
+        # # Cross-linked models with custom name; Hide default icon
+        # {'label': 'Custom', 'icon':None, 'models': (
+        #     'auth.group',
+        #     {'model': 'auth.user', 'label': 'Staff'}
+        # )},
+        #
+        # # Custom app, no models (child links)
+        # {'label': 'Users', 'url': 'auth.user', 'icon':'icon-user'},
+        #
+        # # Separator
+        # '-',
+        #
+        # # Custom app and model with permissions
+        # {'label': 'Secure', 'permissions': 'auth.add_user', 'models': [
+        #     {'label': 'custom-child', 'permissions': ('auth.add_user', 'auth.add_group')}
+        # ]},
+
+        # {'label': u'参数配置', 'icon': 'icon-user', 'models': (
+        #
+        #     {'model': 'common.ParaElec', 'label': u'电力热力排放因子配置'},
+        #     # {'model': 'common.ParaQushi', 'label': u'变暖潜势配置'},
+        #     {'model': 'provincial.DeadlineActivity', 'label': u'截至日期配置'},
+        #     {'model': 'common.CommonSourceFueltype', 'label': u'原料类型'},
+        #     {'model': 'common.IndustryGlobaWarmingTrend', 'label': u'全球变暖潜势配置'},
+        #     {'model': 'common.IndustrySpecialConf', 'label': u'行业特殊配置'},
+        #
+        #     {'model': 'industry.IndustryElectronicMadeProcessVal1', 'label': u'电子设备制造行业-过程排放-原料气配置'},
+        #     {'model': 'industry.IndustryElectronicMadeProcessValName', 'label': u'电子设备制造行业-过程排放-副产品配置'},
+        #     {'model': 'industry.IndustryElectronicMadeProcessValRelate', 'label': u'电子设备制造行业-过程排放数据配置'},
+        #     {'model': 'companysource.CompanySourceLandCH4', 'label': u'陆上交通运输-N20、CH4排放因子配置'},
+        #
+        #     {'model': 'common.region', 'label': u'市区配置'},
+        #     {'model': 'common.SecordRegion', 'label': u'地区配置'},
+        #     {'model': 'common.BusinessType', 'label': u'企业用户类型配置'},
+        # )},
+        # {'label': u'数据库导出配置', 'icon': 'icon-user', 'models': (
+        #     {'model': 'provincial.DataBaseTableGroup', 'label': u'数据库基础配置'},
+        #     {'model': 'provincial.DatabaseExport', 'label': u'数据库导出配置'},
+        # )},
+        # {'label': u'用户', 'icon': 'icon-user', 'models': (
+        #     {'model': 'user.AuthorityGroup', 'label': u'权限组'},
+        #     {'model': 'provincial.CommonUser', 'label': u'用户管理'},
+        # )}
+    )
+}
