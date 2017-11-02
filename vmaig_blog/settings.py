@@ -269,32 +269,5 @@ SUIT_CONFIG = {
         # {'label': 'Secure', 'permissions': 'auth.add_user', 'models': [
         #     {'label': 'custom-child', 'permissions': ('auth.add_user', 'auth.add_group')}
         # ]},
-
-        # {'label': u'参数配置', 'icon': 'icon-user', 'models': (
-        #
-        #     {'model': 'common.ParaElec', 'label': u'电力热力排放因子配置'},
-        #     # {'model': 'common.ParaQushi', 'label': u'变暖潜势配置'},
-        #     {'model': 'provincial.DeadlineActivity', 'label': u'截至日期配置'},
-        #     {'model': 'common.CommonSourceFueltype', 'label': u'原料类型'},
-        #     {'model': 'common.IndustryGlobaWarmingTrend', 'label': u'全球变暖潜势配置'},
-        #     {'model': 'common.IndustrySpecialConf', 'label': u'行业特殊配置'},
-        #
-        #     {'model': 'industry.IndustryElectronicMadeProcessVal1', 'label': u'电子设备制造行业-过程排放-原料气配置'},
-        #     {'model': 'industry.IndustryElectronicMadeProcessValName', 'label': u'电子设备制造行业-过程排放-副产品配置'},
-        #     {'model': 'industry.IndustryElectronicMadeProcessValRelate', 'label': u'电子设备制造行业-过程排放数据配置'},
-        #     {'model': 'companysource.CompanySourceLandCH4', 'label': u'陆上交通运输-N20、CH4排放因子配置'},
-        #
-        #     {'model': 'common.region', 'label': u'市区配置'},
-        #     {'model': 'common.SecordRegion', 'label': u'地区配置'},
-        #     {'model': 'common.BusinessType', 'label': u'企业用户类型配置'},
-        # )},
-        # {'label': u'数据库导出配置', 'icon': 'icon-user', 'models': (
-        #     {'model': 'provincial.DataBaseTableGroup', 'label': u'数据库基础配置'},
-        #     {'model': 'provincial.DatabaseExport', 'label': u'数据库导出配置'},
-        # )},
-        # {'label': u'用户', 'icon': 'icon-user', 'models': (
-        #     {'model': 'user.AuthorityGroup', 'label': u'权限组'},
-        #     {'model': 'provincial.CommonUser', 'label': u'用户管理'},
-        # )}
     )
 }
