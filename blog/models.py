@@ -91,7 +91,7 @@ class Article(models.Model):
     title = models.CharField(max_length=100, verbose_name=u'标题')
     en_title = models.CharField(max_length=100, verbose_name=u'英文标题')
     img = models.ImageField(upload_to='title_img/',
-                           default='/static/img/article/default.jpg', verbose_name=u'图片')
+                           default='/static/img/article/python.jpg', verbose_name=u'图片')
     tags = models.CharField(max_length=200, null=True, blank=True,
                             verbose_name=u'标签', help_text=u'用逗号分隔')
     summary = UEditorField(toolbars=[TOOLBARS_NO_IMAGE], width='100%', height='', verbose_name=u'摘要')

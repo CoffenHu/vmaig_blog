@@ -2,6 +2,7 @@ from django.conf.urls import include, url
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap, Sitemap
 from django.core.urlresolvers import reverse
+from vmaig_blog.settings import MEDIA_ROOT
 
 from django.contrib import admin
 
@@ -62,13 +63,13 @@ sitemaps = {
     'static': StaticViewSitemap
 }
 
-
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^ueditor/',include('DjangoUeditor.urls' )),
+    url(r'^ueditor/',include('DjangoUeditor.urls')),
     url(r'', include('blog.urls')),
     url(r'', include('vmaig_comments.urls')),
     url(r'', include('vmaig_auth.urls')),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
-        name='django.contrib.sitemaps.views.sitemap')
+        name='django.contrib.sitemaps.views.sitemap'),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
 ]
