@@ -4,3 +4,5 @@ qiniu==7.0.5
 pytz==2015.7
 python-memcached==1.57
 django-smtp-ssl==1.0
+django-suit==0.2.19
+DjangoUeditor==1.8.143
