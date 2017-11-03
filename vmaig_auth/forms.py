@@ -3,6 +3,7 @@ from django import forms
 from vmaig_auth.models import VmaigUser
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.models import get_current_site
+from django.utils.translation import ugettext, ugettext_lazy as _
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.core.mail import send_mail
@@ -25,6 +26,7 @@ class VmaigUserCreationForm(forms.ModelForm):
     # 错误信息 invalid 表示username不合法的错误信息,
     # required 表示没填的错误信息
     username = forms.RegexField(
+        label=_("username"),
         max_length=30,
         regex=r'^[\w.@+-]+$',
         error_messages={
@@ -33,17 +35,20 @@ class VmaigUserCreationForm(forms.ModelForm):
         }
     )
     email = forms.EmailField(
+        label=_("Email"),
         error_messages={
             'invalid':  u"email格式错误",
             'required': u'email未填'}
     )
     password1 = forms.CharField(
+        label=_("Password"),
         widget=forms.PasswordInput,
         error_messages={
             'required': u"密码未填"
             }
     )
     password2 = forms.CharField(
+        label=_("Password confirmation"),
         widget=forms.PasswordInput,
         error_messages={
             'required': u"确认密码未填"
@@ -166,6 +171,6 @@ class VmaigPasswordRestForm(forms.Form):
         except Exception as e:
             logger.error(
                 u'[UserControl]用户重置密码邮件发送失败:[{}]/[{}]'.format(
-                    username, email
+                    self.user.username, email
                 )
             )

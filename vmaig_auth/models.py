@@ -20,10 +20,12 @@ class string_with_title(str):
 # Create your models here.
 
 class VmaigUser(AbstractUser):
-    img = models.CharField(max_length=200, default='/static/tx/default.jpg',
+    img = models.ImageField(upload_to='tx/', default='/static/tx/default.jpg',
                            verbose_name=u'头像地址')
     intro = models.CharField(max_length=200, blank=True, null=True,
                              verbose_name=u'简介')
 
     class Meta(AbstractUser.Meta):
-        app_label = string_with_title('vmaig_auth', u"用户管理")
+        verbose_name = u'用户管理'
+        verbose_name_plural = u'用户管理'
+        # app_label = string_with_title('vmaig_auth', u"用户管理")
