@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.conf import settings
+from DjangoUeditor.models import UEditorField
+
+from utils.const import TOOLBARS_NO_IMAGE
 
 
 class string_with_title(str):
@@ -44,9 +47,9 @@ class Nav(models.Model):
     create_time = models.DateTimeField(u'创建时间', auto_now_add=True)
 
     class Meta:
-        verbose_name_plural = verbose_name = u"导航条"
+        verbose_name_plural = verbose_name = u'导航条'
         ordering = ['-create_time']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('blog', u'博客管理')
 
     def __unicode__(self):
         return self.name
@@ -67,7 +70,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'分类'
         ordering = ['rank', '-create_time']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('blog', u'博客管理')
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
@@ -87,12 +90,14 @@ class Article(models.Model):
     category = models.ForeignKey(Category, verbose_name=u'分类')
     title = models.CharField(max_length=100, verbose_name=u'标题')
     en_title = models.CharField(max_length=100, verbose_name=u'英文标题')
-    img = models.CharField(max_length=200,
-                           default='/static/img/article/default.jpg')
+    img = models.ImageField(upload_to='title_img/',
+                           default='/static/img/article/default.jpg', verbose_name=u'图片')
     tags = models.CharField(max_length=200, null=True, blank=True,
                             verbose_name=u'标签', help_text=u'用逗号分隔')
-    summary = models.TextField(verbose_name=u'摘要')
-    content = models.TextField(verbose_name=u'正文')
+    summary = UEditorField(toolbars=[TOOLBARS_NO_IMAGE], width='100%', height='', verbose_name=u'摘要')
+    # content = models.TextField(verbose_name=u'正文')
+    content = UEditorField(u'正文	', toolbars='full', width='100%', height='', imagePath='image/', filePath='file/',
+                           upload_settings={'imageMaxSize': 1204000})
     view_times = models.IntegerField(default=0)
     zan_times = models.IntegerField(default=0)
 
@@ -114,7 +119,7 @@ class Article(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'文章'
         ordering = ['rank', '-is_top', '-pub_time', '-create_time']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('blog', u'博客管理')
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
@@ -138,7 +143,7 @@ class Column(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'专栏'
         ordering = ['-create_time']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('blog', u'博客管理')
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
@@ -161,7 +166,7 @@ class Carousel(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'轮播'
         ordering = ['-create_time']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('blog', u'博客管理')
 
 
 class News(models.Model):
@@ -176,7 +181,7 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'资讯'
         ordering = ['-title']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('blog', u'博客管理')
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse

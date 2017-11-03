@@ -4,7 +4,7 @@
 from os import path
 from django.apps import AppConfig
 
-VERBOSE_APP_NAME = u'ϵͳ'
+VERBOSE_APP_NAME = u'系统'
 
 
 def get_current_app_name(_file):

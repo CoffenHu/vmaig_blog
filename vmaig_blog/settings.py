@@ -27,13 +27,14 @@ SECRET_KEY = 'p1p2e^77+6ex*1@-s6hzcx7l3bx#g2q0w1za1c-x-1p@n6z^x*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+TEMPLATES_DEBUG = True
 
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
-INSTALLED_APPS = (
+SYSTEM_APPS = (
     'suit',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,12 +43,20 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+)
 
+THIRD_APPS = (
+    'DjangoUeditor',
+)
+
+LOCAL_APPS = (
     'blog',
     'vmaig_auth',
     'vmaig_comments',
     'vmaig_system'
 )
+
+INSTALLED_APPS = SYSTEM_APPS + THIRD_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -228,6 +237,8 @@ QINIU_URL = ''
 WEBSITE_TITLE = u'TuTu'
 WEBSITE_WELCOME = u'欢迎来到TuTu'
 
+
+# suit配置
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
 )
@@ -270,4 +281,15 @@ SUIT_CONFIG = {
         #     {'label': 'custom-child', 'permissions': ('auth.add_user', 'auth.add_group')}
         # ]},
     )
+}
+# DjangoUeditor 配置
+UEDITOR_SETTINGS = {
+    'config': {
+        'initialFrameWidth': '100%',  # 默认初始宽度
+        'maximumWords': 100000,     # 允许输入字数
+    },
+
+    'upload': {
+
+    }
 }

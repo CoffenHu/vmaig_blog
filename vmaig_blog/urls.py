@@ -65,6 +65,7 @@ sitemaps = {
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^ueditor/',include('DjangoUeditor.urls' )),
     url(r'', include('blog.urls')),
     url(r'', include('vmaig_comments.urls')),
     url(r'', include('vmaig_auth.urls')),
