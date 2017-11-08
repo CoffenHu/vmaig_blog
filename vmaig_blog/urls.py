@@ -1,4 +1,4 @@
-from django.conf.urls import include, url
+from django.conf.urls import include, url, patterns
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap, Sitemap
 from django.core.urlresolvers import reverse
@@ -73,3 +73,10 @@ urlpatterns = [
         name='django.contrib.sitemaps.views.sitemap'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
 ]
+
+urlpatterns += patterns('api.views',
+    url(r'^api/$', 'index'),
+    url(r'^api/docs/$', 'docs'),
+    url(r'^api/docs/(?P<json>\w+)/$', 'module'),
+)
+
