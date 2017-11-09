@@ -160,12 +160,12 @@ footer {
 /*panel 样式*/
 .panel-vmaig{
     box-shadow: 0px 0px 5px #C2C2C2;
-    border-color:#EEE;
+    /*border-color:#EEE;*/
 }
 
 .panel-vmaig .panel-heading{
-    color: #EEE;
-    background-color: #222;
+    color: #050505;
+    background-color: #EEE;
     border-color: #EEE;
 }
 
@@ -434,7 +434,7 @@ footer {
     margin-bottom:30px;
     border-radius:4px;
     color: #FFF;
-    background-color: #222;
+    /*background-color: #5F5F5F;*/
     border-color: #EEE;
     box-shadow: 0px 0px 5px #C2C2C2;
 }
