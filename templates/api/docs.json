@@ -1,22 +1,23 @@
 {
-    "apiVersion": "1.0.5",
-    "swaggerVersion": "1.2",
+    "apiVersion": "0.0.1",
+    "swaggerVersion": "2.2",
     "apis":[
         {
-            "path": "/company",
+            "path": "/blog",
             "description":"博客管理(3)"
-        },
-        {
-            "path": "/company",
-            "description":"评论管理(3)"
-        },
-        {
-            "path": "/usercontrol",
-            "description":"用户管理(11)"
-        },
-        {
-            "path": "/usercontrol",
-            "description":"系统设置(11)"
         }
+//        ,
+//        {
+//            "path": "/comment",
+//            "description":"评论管理(3)"
+//        }
+//        {
+//            "path": "/system",
+//            "description":"系统管理(11)"
+//        },
+//        {
+//            "path": "/usercontrol",
+//            "description":"用户管理(11)"
+//        }
     ]
 }
